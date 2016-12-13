@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<!-- 配置spring容器监听器 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/spring/applicationContext-*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<filter>
+		<filter-name>userFilter</filter-name>
+		<filter-class>com.nik.filter.UserFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>userFilter</filter-name>
+		<url-pattern>/frontpage/user-center.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>userFilter</filter-name>
+		<url-pattern>/frontpage/user-center-addr.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>userFilter</filter-name>
+		<url-pattern>/frontpage/user-center-pw.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>userFilter</filter-name>
+		<url-pattern>/frontpage/order_list.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>userFilter</filter-name>
+		<url-pattern>/frontpage/cart.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>userFilter</filter-name>
+		<url-pattern>/frontpage/cart.jsp</url-pattern>
+	</filter-mapping>
+	
+	
+	
+	<!-- 前端控制器 -->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<!-- 配置文件位置 -->
+			<param-value>classpath:spring/springmvc.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
+	<display-name>Archetype Created Web Application</display-name>
+	<welcome-file-list>
+		<welcome-file>/frontpage/index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
